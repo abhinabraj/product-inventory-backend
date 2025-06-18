@@ -118,7 +118,6 @@ app.post("/product-image", upload.single("file"), async (req, res) => {
 
 app.listen(8000, async () => {
   console.log("Server is running on port 8000");
-  // await mongoose.connect("mongodb://localhost:27017/mern-express");
   await mongoose.connect(process.env.DB_URL);
   console.log("Connected to MongoDB");
 });
