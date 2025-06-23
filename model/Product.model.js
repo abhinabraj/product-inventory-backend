@@ -18,6 +18,11 @@ const productSchema = new Schema({
     ref: "category",
     required: true,
   },
+  imageUrl: {
+    type: String,
+    required: false,
+    default: "",
+  },
 });
 
 const Product = model("product", productSchema);

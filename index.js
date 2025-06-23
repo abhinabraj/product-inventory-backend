@@ -112,7 +112,7 @@ app.post("/product-image", upload.single("file"), async (req, res) => {
   }
   res.json({
     message: "File uploaded successfully",
-    filename: `http://localhost:8000/uploads/product-images/${req.file.filename}`,
+    filename: `http://localhost:8000/product-images/${req.file.filename}`,
   });
 });
 
