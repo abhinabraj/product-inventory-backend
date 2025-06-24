@@ -11,6 +11,7 @@ import authRouter from "./routes/auth.js";
 import Users from "./model/Users.model.js";
 import Product from "./model/Product.model.js";
 import Category from "./model/Category.model.js";
+import { verifyAuth } from "./middleware/verify-auth.js";
 
 const app = express();
 
@@ -85,7 +86,8 @@ app.post("/product", async (req, res) => {
   res.send(newProduct);
 });
 
-app.get("/product", async (req, res) => {
+app.get("/product", verifyAuth, async (req, res) => {
+  console.log(req.user, "@req.user");
   const products = await Product.find().populate("category");
   res.send(products);
 });

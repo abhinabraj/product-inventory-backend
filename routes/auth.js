@@ -1,5 +1,6 @@
 import Users from "../model/Users.model.js";
 import { Router } from "express";
+import { createToken } from "../utils/create-token.js";
 
 const router = Router();
 
@@ -16,9 +17,17 @@ router.post("/login", async (req, res) => {
     res.send("user or password is incorrect");
   }
   if (foundUser.password === password) {
-    res.json({
+    const accessToken = createToken({
+      email: foundUser.email,
+      _id: foundUser._id,
+    });
+    res.status(200).json({
       message: "login successfull",
-      data: "12345",
+      accessToken,
+    });
+  } else {
+    res.status(401).json({
+      message: "email or password is incorrect",
     });
   }
   console.log(foundUser, "@foundUser");
