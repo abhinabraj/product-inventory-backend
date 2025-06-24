@@ -7,6 +7,7 @@ import "dotenv/config";
 import multer from "multer";
 
 import categoryRouter from "./routes/category.js";
+import authRouter from "./routes/auth.js";
 import Users from "./model/Users.model.js";
 import Product from "./model/Product.model.js";
 import Category from "./model/Category.model.js";
@@ -30,6 +31,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // app.use("/category", categoryRouter);
+
+app.use("/auth", authRouter);
 
 app.get("/category", async (req, res) => {
   const categories = await Category.find();

@@ -15,9 +15,13 @@ const usersSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
+    required: false,
   },
   country: {
+    type: String,
+    required: false,
+  },
+  password: {
     type: String,
     required: true,
   },
