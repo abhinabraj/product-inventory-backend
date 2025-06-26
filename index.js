@@ -79,7 +79,7 @@ app.delete("/user-delete/:id", async (req, res) => {
   console.log(req.params.id);
 });
 
-app.post("/product", async (req, res) => {
+app.post("/product", verifyAuth, async (req, res) => {
   const product = req.body;
   const newProduct = new Product(product);
   await newProduct.save();

@@ -14,8 +14,9 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const foundUser = await Users.findOne({ email: email });
   if (!foundUser) {
-    res.send("user or password is incorrect");
+    return res.send("user or password is incorrect");
   }
+  console.log("after error");
   if (foundUser.password === password) {
     const accessToken = createToken({
       email: foundUser.email,
