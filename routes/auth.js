@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 
 const router = Router();
 
+// comment that should not be on main branch
+
 const user = {
   firstName: "Abhinab",
   lastName: "Basu",
